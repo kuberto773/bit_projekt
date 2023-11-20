@@ -4,7 +4,7 @@ var express = require("express"),
     bodyParser = require("body-parser"), 
     MongoStore = require('connect-mongo')
 
-mongoose.connect("mongodb://localhost:27017").then(() => console.log("Connected")).catch(e => console.error(e))
+mongoose.connect("mongodb://mongo:27017").then(() => console.log("Connected")).catch(e => console.error(e))
 const db = mongoose.connection;
 const User = require("./models/user"); 
 const authRoutes = require('./auth');
