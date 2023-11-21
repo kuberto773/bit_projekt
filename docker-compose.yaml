@@ -2,8 +2,14 @@ version: '3'
 
 services:
   # Node.js application
+
+  attacker_app:
+    build: ./attacker_app
+    ports:
+      - "3005:3005"
+
   app:
-    build: .
+    build: ./legit_app
     ports:
       - "3000:3000"
     depends_on:
