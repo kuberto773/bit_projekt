@@ -16,7 +16,7 @@ router.post("/register", async (req, res) => {
             if (err) {
                 res.send(err);
             } else {
-                res.send({ message: "Successful" });
+                res.sendFile(path.join(__dirname, 'public', 'register_success.html'));
             }
         }
     )
