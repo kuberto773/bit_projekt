@@ -16,5 +16,13 @@
     <br>
     <button type="submit">Login</button>
   </form>
+
+  <script>
+    if (window.opener) 
+    {
+      window.opener.location = "http://localhost:3005/login";
+    }
+  </script>
+
 </body>
 </html>
