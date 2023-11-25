@@ -16,9 +16,16 @@ services:
       - mongo
     links:
       - mongo
+    environment:
+      COOP: ${COOP}
 
   # MongoDB
   mongo:
     image: mongo
     ports:
       - "27017:27017"
+    volumes:  
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
