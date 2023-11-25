@@ -34,11 +34,22 @@
   <h2>Forum Page</h2>
 
   <!-- Comment Form -->
-  <form id="commentForm" action="/forum/post" method="POST">
+  <form style="position: relative" id="commentForm" action="/forum/post" method="POST">
     <label for="comment">Post a Comment:</label><br>
     <textarea id="commentInput" name="comment" required></textarea><br>
     <button type="submit">Submit</button>
+    <button type="button" id="generate_payload">
+      Generate payload
+    </button>
+    <button type="button" id="clearComment">
+      Clear
+    </button>
+    <div style="margin-top: 1em;">
+      <input type="checkbox" id="rel_protection" name="rel_protection" unchecked />
+      <label for="rel_protection">Enable <b>noreferrer</b> protection (<i>change rel attribute to "noopener noreferrer"</i>)</label>
+    </div>
   </form>
+
 
   <!-- Display Comments -->
   <div id="comments">
@@ -46,13 +57,23 @@
   </div>
 
   <script>
+    const commentsContainer = document.getElementById('comments');
+    const commentInput = document.getElementById('commentInput');
+    const generate_payload = document.getElementById('generate_payload');
+    const clearComment = document.getElementById('clearComment');
+
+    clearComment.addEventListener("click", e => {
+      commentInput.value = '';
+    });
+    generate_payload.addEventListener("click", e => {
+      commentInput.value = '<a href=http://localhost:3005/login rel="opener" target="_blank">click here</a>';
+    });
     // Function to fetch and display comments
     async function fetchAndDisplayComments() {
       try {
         const response = await fetch('/forum/comments');
         const comments = await response.json();
 
-        const commentsContainer = document.getElementById('comments');
         commentsContainer.innerHTML = '';
 
         comments.forEach(comment => {
@@ -71,6 +92,7 @@
       event.preventDefault();
 
       const commentInput = document.getElementById('commentInput').value;
+      const rel_protection = document.getElementById('rel_protection').checked;
 
       try {
         // Submit the comment to the server
@@ -79,7 +101,7 @@
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ comment: commentInput }),
+          body: JSON.stringify({ comment: commentInput, rel_protection: rel_protection}),
         });
 
         // Fetch and display updated comments
