@@ -20,5 +20,5 @@ app.post('/login', (req, res) => {
 
 var port = process.env.PORT || 3005; 
 app.listen(port, function () { 
-    console.log("Server Has Started!"); 
+    console.log("Listening on port " + port); 
 }); 
