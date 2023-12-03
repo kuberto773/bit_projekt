@@ -3,11 +3,6 @@ const Comment = require("./models/comment");
 const express=require('express')
 const router=express.Router()
 
-
-router.get("/", function (req, res) { 
-    res.redirect("/forum");
-}); 
-
 router.get('/forum', isLoggedIn, function (req, res) {
     res.sendFile(path.join(__dirname, 'public', 'forum.html'));
 });

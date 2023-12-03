@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forum</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 80px;
+    }
+
+    .comment {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Javascript window.open() function</h2>
+  <p>
+    Open the attackers app by pressing the button below.
+  </p>
+
+<button type="button" id="window_trigger">
+    Trigger
+</button>
+<div style="margin-top: 1em;">
+    <input type="checkbox" id="protection" name="protection" unchecked />
+    <label for="rel_protection">Enable <b>noreferrer</b> protection (using argument in window.open() function)</label>
+</div>
+
+<script>
+    const window_trigger = document.getElementById('window_trigger');
+    window_trigger.addEventListener("click", e => {
+        const protection = document.getElementById('protection').checked;
+        
+        if ( protection )
+        {
+            myWindow = window.open('http://localhost:3005/malicious', 'MyNewWindow', 'width=400,height=300,noopener,noreferrer');
+        }
+        else
+        {
+            myWindow = window.open('http://localhost:3005/malicious', 'MyNewWindow', 'width=400,height=300');
+        }
+    });
+</script>
+</body>
+</html>

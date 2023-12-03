@@ -18,6 +18,14 @@ app.post('/login', (req, res) => {
     res.send("Credentials hijacked !");
 });
 
+app.get("/malicious", function (req, res) { 
+    res.sendFile(path.join(__dirname, 'public', 'malicious.html'));
+}); 
+
+app.get("/ad", function (req, res) { 
+    res.sendFile(path.join(__dirname, 'public', 'ad.html'));
+}); 
+
 var port = process.env.PORT || 3005; 
 app.listen(port, function () { 
     console.log("Listening on port " + port); 
