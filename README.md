@@ -7,7 +7,7 @@ Legit app uses mongodb as its database for user registration and login/authentic
 Use branch **main** !
 ## Usage
 1. Run **docker-compose up --build -d** to build and run the containers
-2. Run **docker logs -f projekt_app_docker-attacker_app-1** to view logs from attacker app in order to catch user's login information
+2. Run **docker logs -f bit_projekt-attacker_app-1** to view logs from attacker app in order to catch user's login information
 3. Go to localhost:3000, which represents legit app (attacker's app is on port 3005, but there is no need going there manually)
 4. App represents 4 parts (in order to use the one you need to be registered as well as logged in)
 5. Each part represents different methods to perform reverse tabnabbing
